@@ -1,0 +1,278 @@
+<!-- <odoo>
+	<record id="hospital_view_tree" model="ir.ui.view">
+			<field name="name">hospital.hospital.tree</field>
+			<field name="model">hospital.hospital</field>
+			<field name="arch" type="xml">
+				<tree string="Hospital">
+					<field name="name"/>
+					<field name="country_id"/>
+					<field name="speciality_ids" widget="many2many_tags"/>
+				</tree>
+			</field>
+	</record>
+
+	<record id="hospital_view_form" model="ir.ui.view">
+			<field name="name">hospital.hospital.form</field>
+			<field name="model">hospital.hospital</field>
+			<field name="arch" type="xml">
+				<form string="Hospital">
+					<sheet>
+						<group>
+							<field name="name"/>
+							<field name="country_id"/>
+							<field name="speciality_ids" widget="many2many_tags"/>
+							<field name="branch_ids">
+								<tree>
+									<field name="name"/>
+									<field name="country_id"/>
+									<field name="speciality_ids" widget="many2many_tags"/>
+								</tree>
+								<form>
+									<sheet>
+										<group>
+											<field name="name"/>
+											<field name="country_id"/>
+											<field name="speciality_ids" widget="many2many_tags"/>
+										</group>
+									</sheet>
+								</form>
+							</field>
+						</group>
+					</sheet>
+				</form>
+			</field>
+	</record>
+
+	<record id="hospital_branch_view_tree" model="ir.ui.view">
+			<field name="name">hospital.branch.tree</field>
+			<field name="model">hospital.branch</field>
+			<field name="arch" type="xml">
+				<tree string="Branch">
+					<field name="name"/>
+					<field name="country_id"/>
+					<field name="speciality_ids" widget="many2many_tags"/>
+					<field name="hospital_id"/>
+				</tree>
+			</field>
+	</record>
+
+	<record id="hospital_branch_view_form" model="ir.ui.view">
+			<field name="name">hospital.branch.form</field>
+			<field name="model">hospital.branch</field>
+			<field name="arch" type="xml">
+				<form string="Branch">
+					<sheet>
+						<group>
+							<field name="name"/>
+							<field name="country_id"/>
+							<field name="speciality_ids" widget="many2many_tags"/>
+							<field name="hospital_id"/>
+						</group>
+					</sheet>
+				</form>
+			</field>
+	</record>
+
+
+	<record id="action_hospital_menu" model="ir.actions.act_window">
+			<field name="name">Hospital</field>
+			<field name="res_model">hospital.hospital</field>
+			<field name="view_mode">tree,form</field>
+	</record>
+
+	<record id="action_hospital_branch_menu" model="ir.actions.act_window">
+			<field name="name">Branch</field>
+			<field name="res_model">hospital.branch</field>
+			<field name="view_mode">tree,form</field>
+	</record>
+
+	
+  	<menuitem id="hospital_main_menu" name="Hospital" sequence="0"/>
+ 	<menuitem id="hospital_menu"
+    name="Hospitals"
+    parent="hospital_main_menu"
+    action="action_hospital_menu"
+    sequence="70"/>
+
+   <menuitem id="hospital_branch_menu"
+    name="Branches"
+    parent="hospital_main_menu"
+    action="action_hospital_branch_menu"
+    sequence="70"/>
+</odoo> -->
+
+<odoo>
+	<!--Starting of UI -->
+	<!-- Tree View -->
+	<record id="tree_hospital_view" model="ir.ui.view">
+			<field name="name">hospital.hospital.tree</field>
+			<field name="model">hospital.hospital</field>
+			<field name="arch" type="xml">
+				<tree string="Hospital">
+					<field name="name"/>
+					<field name="website"/>
+					<field name="branch_ids"/>
+				</tree>
+			</field>
+	</record>
+
+	<!-- Form View -->
+	<record id="form_hospital_view" model="ir.ui.view">
+			<field name="name">hospital.hospital.form</field>
+			<field name="model">hospital.hospital</field>
+			<field name="arch" type="xml">
+				<form string="hospital">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+							</group>
+							<group>
+							<field name="branch_ids">
+								<tree>
+									<field name="name"/>
+									<field name="phone_number"/>
+									<field name="country_id"/>
+								</tree>
+								<form>
+									<sheet>
+										<group>
+											<group>
+												<field name="name" readonly="1"/>
+												<field name="phone_number"/>
+												<field name="specialities_ids" widget="many2many_tags"/>
+												<field name="hospital_id"/>
+												<!-- <field name="country_id"/> -->
+
+											</group>
+											<group>
+												<field name="date"/>
+												<field name="year"/>
+												<field name="facilities_ids" widget="many2many_tags"/>
+												<field name="department_ids" widget="many2many_tags"/>
+											<!-- <field name="email_address"/> -->
+											<field name="country_id"/>
+											</group>
+										</group>
+									</sheet>
+								</form>
+								
+							</field>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+	</record>
+
+	<record id="tree_hospital_branch_view" model="ir.ui.view">
+			<field name="name">hospital.branch.tree</field>
+			<field name="model">hospital.branch</field>
+			<field name="arch" type="xml">
+				<tree string="Hospital branch">
+					<field name="name"/>
+					<field name="phone_number"/>
+					<field name="country_id"/>
+					
+				</tree>
+			</field>
+	</record>
+	<record id="form_hospital_branch_view" model="ir.ui.view">
+			<field name="name">hospital.branch.form</field>
+			<field name="model">hospital.branch</field>
+			<field name="arch" type="xml">
+				<form string="hospital branch">
+					<sheet>
+						<group>
+							<group>
+								<field name="name" readonly="1"/>
+								<field name="phone_number"/>
+								<field name="specialities_ids" widget="many2many_tags"/>
+								<field name="hospital_id"/>
+								<!-- <field name="country_id"/> -->
+
+							</group>
+							<group>
+								<field name="date"/>
+								<field name="year"/>
+								<field name="facilities_ids" widget="many2many_tags"/>
+								<field name="department_ids" widget="many2many_tags"/>
+							<!-- <field name="email_address"/> -->
+							<field name="country_id"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+	</record>
+
+
+	<!--Ending of UI -->
+	<!--Starting of Actions creation for doing some jobs -->
+	<record id = "action_hospital" model = "ir.actions.act_window">
+		<field name = "name">Hospital</field>
+		<field name = "res_model">hospital.hospital</field>
+		<field name="view_mode">tree,form</field>
+
+	</record>
+
+	<record id = "action_hospital_specialities" model = "ir.actions.act_window">
+		<field name = "name">Hospital Specialities</field>
+		<field name = "res_model">hospital.specialities</field>
+		<field name="view_mode">tree,form</field>
+
+	</record>
+
+	<record id = "action_hospital_facilities" model = "ir.actions.act_window">
+		<field name = "name">Hospital Facilities</field>
+		<field name = "res_model">hospital.facilities</field>
+		<field name="view_mode">tree,form</field>
+
+	</record>
+	<record id = "action_hospital_departments" model = "ir.actions.act_window">
+		<field name = "name">Hospital Departments</field>
+		<field name = "res_model">hospital.departments</field>
+		<field name="view_mode">tree,form</field>
+
+	</record>
+
+	<record id = "action_hospital_branch" model = "ir.actions.act_window">
+		<field name = "name">Hospital Branches</field>
+		<field name = "res_model">hospital.branch</field>
+		<field name="view_mode">tree,form</field>
+
+	</record>
+	<!--Ending of Actions creation for doing some jobs -->
+
+	<!--Starting of Menu bar creation for Hospital Management -->
+	<menuitem id= "menu_hospital_master" name = "Hospital" sequence = "0"/>
+	<menuitem id = "menu_hospital"
+		name = "Hospital"
+		action = "action_hospital"
+		parent = "menu_hospital_master"
+		sequence = "0"/>
+	<menuitem id = "menu_hospital_specialities"
+		name = "Hospital Specialities"
+		action = "action_hospital_specialities"
+		parent = "menu_hospital"
+		sequence = "0"/>
+	<menuitem id = "menu_hospital_facilities"
+		name = "Facilities"
+		action = "action_hospital_facilities"
+		parent = "menu_hospital"
+		sequence = "0"/>
+	<menuitem id = "menu_hospital_departments"
+		name = "Departments"
+		action = "action_hospital_departments"
+		parent = "menu_hospital"
+		sequence = "0"/>
+	<menuitem id = "menu_hospital_branch"
+		name = "Branches"
+		action = "action_hospital_branch"
+		parent = "menu_hospital"
+		sequence = "0"/>
+	<!--Ending of Menu bar creation for Hospital Management -->
+	
+</odoo>
+
+
