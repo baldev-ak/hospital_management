@@ -102,6 +102,12 @@
 </odoo> -->
 
 <odoo>
+	<record id = "action_hospital_branch_form" model = "ir.actions.act_window">
+		<field name = "name">Hospital Branches</field>
+		<field name = "res_model">hospital.branch</field>
+		<field name="view_mode">form</field>
+
+	</record>
 	<!--Starting of UI -->
 	<!-- Tree View -->
 	<record id="tree_hospital_view" model="ir.ui.view">
@@ -111,7 +117,8 @@
 				<tree string="Hospital">
 					<field name="name"/>
 					<field name="website"/>
-					<field name="branch_ids"/>
+					<!-- <field name="branch_ids"/> -->
+					<field name="no_of_branch"/>
 				</tree>
 			</field>
 	</record>
@@ -122,13 +129,15 @@
 			<field name="model">hospital.hospital</field>
 			<field name="arch" type="xml">
 				<form string="hospital">
+					<header>
+						<button name="%(hospital_management.action_hospital_branch_form)d" string="Create Branches" type="action" class="btn-primary"/>
+					</header>
 					<sheet>
 						<group>
 							<group>
 								<field name="name"/>
-							</group>
-							<group>
-							<field name="branch_ids">
+								<field name="no_of_branch"/>	
+								<field name="branch_ids">
 								<tree>
 									<field name="name"/>
 									<field name="phone_number"/>
@@ -173,7 +182,8 @@
 					<field name="name"/>
 					<field name="phone_number"/>
 					<field name="country_id"/>
-					
+					<field name="status_id"/>
+					<button name = "count_status" string = "Status" type = "object" class = "btn-primary"/>
 				</tree>
 			</field>
 	</record>
@@ -242,6 +252,15 @@
 		<field name="view_mode">tree,form</field>
 
 	</record>
+
+	<record id = "action_hospital_branch" model = "ir.actions.act_window">
+		<field name = "name">Hospital Branches</field>
+		<field name = "res_model">hospital.branch</field>
+		<field name="view_mode">tree,form</field>
+
+	</record>
+	
+
 	<!--Ending of Actions creation for doing some jobs -->
 
 	<!--Starting of Menu bar creation for Hospital Management -->

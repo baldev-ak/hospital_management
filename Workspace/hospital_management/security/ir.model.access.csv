@@ -4,3 +4,5 @@ access_hospital_specialities,access_user_hospital_specialities,model_hospital_sp
 access_hospital_facilities,access_user_hospital_facilities,model_hospital_facilities,base.group_user,1,1,1,1
 access_hospital_departments,access_user_hospital_departments,model_hospital_departments,base.group_user,1,1,1,1
 access_hospital_branch,access_user_hospital_branch,model_hospital_branch,base.group_user,1,1,1,1
+access_hospital_doctor,access_user_hospital_doctor,model_hospital_doctor,base.group_user,1,1,1,1
+access_doctor_degree,access_user_doctor_degree,model_doctor_degree,base.group_user,1,1,1,1

@@ -14,6 +14,7 @@
 	'data': [
 	'security/ir.model.access.csv',
 	'views/hospital_view.xml',
+	'views/doctor_view.xml',
 	],
 	'installable': True,
 	'application': True,
