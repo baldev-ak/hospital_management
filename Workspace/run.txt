@@ -1,4 +1,4 @@
-python3 odoo-bin --addons-path=addons/,/home/odoo/Desktop/Workspace --xmlrpc-port 9070 --db-filter v15_hospital_management_18082022 -u hospital_management
+python3 odoo-bin --addons-path=addons/,/home/odoo/Desktop/hospital_management/Workspace/ --xmlrpc-port 9070 --db-filter v15_hospital_management_18082022 -u hospital_management
 
 k4c2-yzxx-6dq9
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh

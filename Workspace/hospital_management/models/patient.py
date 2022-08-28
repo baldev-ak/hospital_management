@@ -1,9 +1,9 @@
 from odoo import fields,models,api
 from datetime import date
 
-class Doctor(models.Model):
-    _name = "hospital.doctor"
-    _description = "Doctor"
+class Patient(models.Model):
+    _name = "hospital.patient"
+    _description = "Patient"
 
     name = fields.Char(string = 'Name')
     gender = fields.Selection([('male','Male'),('female','Female')], string = "Gender")
@@ -11,11 +11,9 @@ class Doctor(models.Model):
     email_address = fields.Char(string='Email')
     date_of_birth = fields.Date(string='Date of Birth')
     age = fields.Integer(string = 'Age', compute = '_compute_age', store = True)
-    date_of_joining = fields.Date(string='Date of Joining')
+    blood_group = fields.Selection([('a+','A+'),('a-','A-'),('b+','B+'),('b-','B-')], string = "Blood Group")
     hospital_id = fields.Many2one(comodel_name="hospital.hospital", string='Hospital')
-    branch_id = fields.Many2one(comodel_name="hospital.branch", inverse_name="doctor_ids", string='Branch')
-    speciality_id = fields.Many2one(comodel_name="hospital.specialities", string='Specialities')
-    degree_ids = fields.Many2many(comodel_name = "doctor.degree", string = "Degree")
+    branch_ids = fields.Many2one(comodel_name="hospital.branch", inverse_name="doctor_ids", string='Branch')
 
     @api.depends('date_of_birth')
     def _compute_age(self):
@@ -26,11 +24,3 @@ class Doctor(models.Model):
                 today = date.today()
                 age = today.year - openingdate.year - ((today.month, today.day) < (openingdate.month, openingdate.day))
                 rec.age = age
-    def action_patient(self):
-        print("\n\n\n\n-----------------Test-------------\n\n\n")
-    
-class Degree(models.Model):
-    _name = "doctor.degree"
-    _description = "Doctor Degrees"
-
-    name = fields.Char(string = "Degree")

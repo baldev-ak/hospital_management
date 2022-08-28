@@ -10,7 +10,7 @@
 					<field name="phone_number"/>
 					<field name="gender"/>
 					<field name="hospital_id"/>
-					<field name="branch_ids"/>
+					<field name="branch_id"/>
 					<field name="speciality_id"/>
 					<field name="degree_ids" widget="many2many_tags"/>
 				</tree>
@@ -22,10 +22,19 @@
 			<field name="model">hospital.doctor</field>
 			<field name="arch" type="xml">
 				<form string="Doctor">
+					<sheet>
+					<div class = "oe_button_box" name = "button_box">
+						<button name = "action_patient" type = "object" class = "oe_stat_button" icon = "fa-calendar">
+							<div class = "o_stat_text">
+								<field name = "age" class = "oe_stat_value"/>
+								<span class = "o_stat_text">Patients</span>
+							</div>
+						</button>
+					</div>
 					<!-- <header>
 						<button name="%(hospital_management.action_hospital_branch_form)d" string="Create Branches" type="action" class="btn-primary"/>
 					</header> -->
-					<sheet>
+					
 						<group>
 							<group>
 								<field name="name"/>
@@ -39,7 +48,7 @@
 								<field name="date_of_joining"/>
 								<field name="degree_ids" widget="many2many_tags"/>
 								<field name="hospital_id"/>
-								<field name="branch_ids"/>
+								<field name="branch_id"/>
 							</group>
 						</group>
 					</sheet>

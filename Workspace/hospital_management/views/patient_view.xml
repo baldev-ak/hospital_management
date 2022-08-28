@@ -1,0 +1,59 @@
+<odoo>
+	<!--Starting of UI -->
+	<!-- Tree View -->
+	<record id="tree_hospital_patient_view" model="ir.ui.view">
+			<field name="name">hospital.patient.tree</field>
+			<field name="model">hospital.patient</field>
+			<field name="arch" type="xml">
+				<tree string="patient">
+					<field name="name"/>
+					<field name="phone_number"/>
+					<field name="gender"/>
+					<field name="date_of_birth"/>
+					<field name="blood_group"/>
+					<field name="hospital_id"/>
+					<field name="branch_ids"/>
+				</tree>
+			</field>
+	</record>
+	<!-- Form View -->
+	<record id="form_hospital_patient_view" model="ir.ui.view">
+			<field name="name">hospital.patient.form</field>
+			<field name="model">hospital.patient</field>
+			<field name="arch" type="xml">
+				<form string="patient">
+					<sheet>
+						<group>
+							<group>
+								<field name="name"/>
+								<field name="phone_number"/>
+								<field name="gender"/>
+							</group>
+							<group>
+								<field name="date_of_birth"/>
+								<field name="blood_group"/>
+								<field name="hospital_id"/>
+								<field name="branch_ids"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+	</record>
+	<!--Ending of UI -->
+
+
+	<!-- Action of Doctor -->
+	<record id = "action_patient" model = "ir.actions.act_window">
+		<field name = "name">Patient</field>
+		<field name = "res_model">hospital.patient</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<!-- Menubar of Patient -->
+	<menuitem id = "menu_patient"
+		name = "Patient"
+		action = "action_patient"
+		parent = "menu_hospital_master"
+		sequence = "2"/>
+</odoo>
