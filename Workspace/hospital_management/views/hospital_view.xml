@@ -116,9 +116,9 @@
 			<field name="arch" type="xml">
 				<tree string="Hospital">
 					<field name="name"/>
-					<field name="website"/>
-					<!-- <field name="branch_ids"/> -->
-					<field name="no_of_branch"/>
+					<!-- <field name="website"/> -->
+					<field name="branch_ids"/>
+					<!-- <field name="no_of_branch"/> -->
 				</tree>
 			</field>
 	</record>
@@ -133,15 +133,36 @@
 						<button name="%(hospital_management.action_hospital_branch_form)d" string="Create Branches" type="action" class="btn-primary"/>
 					</header>
 					<sheet>
+						<div class = "oe_button_box" position = "outside" name = "button_box">
+							<button name = "action_branch" type = "object" class = "oe_stat_button" icon = "fa-calendar">
+								<div class = "o_stat_info">
+									<field name = "no_of_branch" class = "oe_stat_value"/>
+									<span class = "o_stat_text">Branch</span>
+								</div>
+							</button>
+							<button name = "action_patient" type = "object" class = "oe_stat_button" icon = "fa-calendar">
+									<div class = "o_stat_info">
+										<field name = "no_of_patients" class = "oe_stat_value"/>
+										<span class = "o_stat_text">Patients</span>
+									</div>
+							</button>
+							<button name = "action_doctor" type = "object" class = "oe_stat_button" icon = "fa-calendar">
+									<div class = "o_stat_info">
+										<field name = "no_of_doctors" class = "oe_stat_value"/>
+										<span class = "o_stat_text">Doctors</span>
+									</div>
+							</button>
+						</div>
 						<group>
 							<group>
 								<field name="name"/>
 								<field name="no_of_branch"/>	
 								<field name="branch_ids">
-								<tree>
+								<tree decoration-success="status == 'open'" decoration-danger = "status == 'closed'">
 									<field name="name"/>
 									<field name="phone_number"/>
 									<field name="country_id"/>
+									<field name="status"/>
 								</tree>
 								<form>
 									<sheet>
@@ -151,6 +172,7 @@
 												<field name="phone_number"/>
 												<field name="specialities_ids" widget="many2many_tags"/>
 												<field name="hospital_id"/>
+												<field name="status"/>
 												<!-- <field name="country_id"/> -->
 
 											</group>
@@ -178,12 +200,13 @@
 			<field name="name">hospital.branch.tree</field>
 			<field name="model">hospital.branch</field>
 			<field name="arch" type="xml">
-				<tree string="Hospital branch">
+				<tree string="Hospital branch" decoration-success="status == 'open'" decoration-danger = "status == 'closed'">
 					<field name="name"/>
 					<field name="phone_number"/>
 					<field name="country_id"/>
-					<field name="status_id"/>
-					<button name = "count_status" string = "Status" type = "object" class = "btn-primary"/>
+					<field name="status"/>
+					<!-- <field name="status_id"/> -->
+					<!-- <button name =  "count_status" string = "Status" type = "object" class = "btn-primary"/>  -->
 				</tree>
 			</field>
 	</record>
@@ -193,6 +216,38 @@
 			<field name="arch" type="xml">
 				<form string="hospital branch">
 					<sheet>
+						<div class = "oe_button_box" position = "outside" name = "button_box">
+							<button name = "action_branch_patient" type = "object" class = "oe_stat_button" icon = "fa-calendar">
+									<div class = "o_stat_info">
+										<field name = "no_of_patients" class = "oe_stat_value"/>
+										<span class = "o_stat_text">Patients</span>
+									</div>	
+							</button>
+							<button name = "action_branch_department" type = "object" class = "oe_stat_button" icon = "fa-calendar">
+									<div class = "o_stat_info">
+										<field name = "no_of_department" class = "oe_stat_value"/>
+										<span class = "o_stat_text">Department</span>
+									</div>
+							</button>
+							<button name = "action_branch_facility" type = "object" class = "oe_stat_button" icon = "fa-calendar">
+									<div class = "o_stat_info">
+										<field name = "no_of_facilities" class = "oe_stat_value"/>
+										<span class = "o_stat_text">Facilities</span>
+									</div>
+							</button>
+							<button name = "action_branch_speciality" type = "object" class = "oe_stat_button" icon = "fa-calendar">
+									<div class = "o_stat_info">
+										<field name = "no_of_specialities" class = "oe_stat_value"/>
+										<span class = "o_stat_text">Specialities</span>
+									</div>
+							</button>
+							<button name = "action_branch_doctor" type = "object" class = "oe_stat_button" icon = "fa-calendar">
+									<div class = "o_stat_info">
+										<field name = "no_of_doctors" class = "oe_stat_value"/>
+										<span class = "o_stat_text">Doctors</span>
+									</div>
+							</button>
+						</div>
 						<group>
 							<group>
 								<field name="name" readonly="1"/>
@@ -205,10 +260,10 @@
 							<group>
 								<field name="date"/>
 								<field name="year"/>
+								<field name="status"/>
 								<field name="facilities_ids" widget="many2many_tags"/>
 								<field name="department_ids" widget="many2many_tags"/>
-							<!-- <field name="email_address"/> -->
-							<field name="country_id"/>
+								<field name="country_id"/>
 							</group>
 						</group>
 					</sheet>

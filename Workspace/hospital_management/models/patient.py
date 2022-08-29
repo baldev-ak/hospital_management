@@ -13,7 +13,8 @@ class Patient(models.Model):
     age = fields.Integer(string = 'Age', compute = '_compute_age', store = True)
     blood_group = fields.Selection([('a+','A+'),('a-','A-'),('b+','B+'),('b-','B-')], string = "Blood Group")
     hospital_id = fields.Many2one(comodel_name="hospital.hospital", string='Hospital')
-    branch_ids = fields.Many2one(comodel_name="hospital.branch", inverse_name="doctor_ids", string='Branch')
+    branch_id = fields.Many2one(comodel_name="hospital.branch", inverse_name="doctor_ids", string='Branch')
+    doctor_id = fields.Many2one(comodel_name="hospital.doctor", string='Responsible Dr.')
 
     @api.depends('date_of_birth')
     def _compute_age(self):

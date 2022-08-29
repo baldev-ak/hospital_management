@@ -9,6 +9,7 @@
 					<field name="name"/>
 					<field name="phone_number"/>
 					<field name="gender"/>
+					<!-- <field name="no_of_patients"/> -->
 					<field name="hospital_id"/>
 					<field name="branch_id"/>
 					<field name="speciality_id"/>
@@ -23,10 +24,10 @@
 			<field name="arch" type="xml">
 				<form string="Doctor">
 					<sheet>
-					<div class = "oe_button_box" name = "button_box">
+					<div class = "oe_button_box" position = "outside" name = "button_box">
 						<button name = "action_patient" type = "object" class = "oe_stat_button" icon = "fa-calendar">
-							<div class = "o_stat_text">
-								<field name = "age" class = "oe_stat_value"/>
+							<div class = "o_stat_info">
+								<field name = "no_of_patients" class = "oe_stat_value"/>
 								<span class = "o_stat_text">Patients</span>
 							</div>
 						</button>
