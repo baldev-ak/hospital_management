@@ -37,6 +37,7 @@ class Hospital(models.Model):
     branch_ids = fields.One2many(comodel_name="hospital.branch", inverse_name="hospital_id", string='Branches')
     no_of_branch = fields.Integer(compute='_compute_count_branch', string='Total Branches', store = True)
     doctor_ids = fields.One2many(comodel_name="hospital.doctor", inverse_name="hospital_id", string='Doctors')
+    
     # def create(self,vals):
     #     res = super(Hospital,self).create(vals)
     #     res.branch_ids.name = res.branch_ids.hospital_id.name + " " + res.branch_ids.country_id.name 
@@ -76,7 +77,7 @@ class HospitalBranch(models.Model):
     department_ids = fields.Many2many(comodel_name="hospital.departments", string= "Departments")
     specialities_ids = fields.Many2many(comodel_name="hospital.specialities", string='Specialities')
     status_id = fields.Many2one(comodel_name="hospital.branch.status", string='Status', store=True)
-    doctor_ids = fields.One2many(comodel_name="hospital.doctor", inverse_name="branch_ids", string='Doctors')
+    doctor_ids = fields.One2many(comodel_name="hospital.doctor", inverse_name="branch_id", string='Doctors')
 
     def count_status(self):
         print("\n\n\n------------Clicked----------------\n\n\n")
