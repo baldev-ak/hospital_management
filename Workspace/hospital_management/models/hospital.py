@@ -71,7 +71,7 @@ class Hospital(models.Model):
         'res_model':'hospital.branch',
         'domain':[('hospital_id','=',self.id)],
         'view_mode': 'tree,form',
-        'target':'current'
+        'target':'new'
         }
 
     def action_doctor(self):

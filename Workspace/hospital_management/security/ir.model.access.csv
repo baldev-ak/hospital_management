@@ -7,3 +7,4 @@ access_hospital_branch,access_user_hospital_branch,model_hospital_branch,base.gr
 access_hospital_doctor,access_user_hospital_doctor,model_hospital_doctor,base.group_user,1,1,1,1
 access_doctor_degree,access_user_doctor_degree,model_doctor_degree,base.group_user,1,1,1,1
 access_hospital_patient,access_user_hospital_patient,model_hospital_patient,base.group_user,1,1,1,1
+access_branch_wizard,access_user_branch_wizard,model_branch_wizard,base.group_user,1,1,1,1

@@ -1,0 +1,33 @@
+<odoo>
+	<data>
+		<record id="form_branch_view" model="ir.ui.view">
+				<field name="name">branch.wizard.form</field>
+				<field name="model">branch.wizard</field>
+				<field name="arch" type="xml">
+					<form>
+						<sheet>
+							<group>
+								<field name="name"/>
+							</group>
+						<footer>
+							<button name = "button_confirm" string = "submit" type = "object" class = "oe_highlight"/>
+						</footer>
+
+						</sheet>
+					</form>
+				</field>
+		</record>
+		<record id = "action_branch_wizard" model = "ir.actions.act_window">
+			<field name = "name">Branch Wizard</field>
+			<field name = "res_model">branch.wizard</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+			<field name="view_id" ref = "form_branch_view"/>
+		</record>
+		<menuitem id = "menu_branch_wizard"
+			name = "Wizard"
+			action = "action_branch_wizard"
+			parent = "menu_hospital_master"
+			sequence = "3"/>
+	</data>
+</odoo>
