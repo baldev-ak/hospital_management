@@ -7,10 +7,21 @@
 					<form>
 						<sheet>
 							<group>
-								<field name="name"/>
+								<field name="name" required = "1"/>
+								<field name="gender"/>
+								<field name="phone_number"/>
+								<field name="email_address"/>
+								<field name="blood_group"/>
+								<field name="date_of_birth"/>
+								<field name="age"/>
+								<field name="hospital_id"/>
+								<field name="branch_id"/>
+								<field name="doctor_id" required = "1"/>
 							</group>
+							
 						<footer>
-							<button name = "button_confirm" string = "submit" type = "object" class = "oe_highlight"/>
+							<button name = "button_confirm" string = "Save" type = "object" class = "oe_highlight"/>
+							<button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
 						</footer>
 
 						</sheet>

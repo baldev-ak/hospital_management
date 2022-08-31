@@ -2,6 +2,7 @@ python3 odoo-bin --addons-path=addons/,/home/odoo/Desktop/hospital_management/Wo
 
 git key - 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
 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
+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
 k4c2-yzxx-6dq9
 source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
 
