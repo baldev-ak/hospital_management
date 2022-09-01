@@ -194,11 +194,11 @@ class HospitalBranch(models.Model):
                 age = today.year - openingdate.year - ((today.month, today.day) < (openingdate.month, openingdate.day))
                 rec.year = age
 
-    @api.model
-    def create(self,vals):
-        res = super(HospitalBranch,self).create(vals)
-        res.name=res.hospital_id.name + "-" + res.country_id.name
-        return res
+    # @api.model
+    # def create(self,vals):
+    #     res = super(HospitalBranch,self).create(vals)
+    #     res.name=res.hospital_id.name + "-" + res.country_id.name
+    #     return res
 
 class HospitalSpecialities(models.Model):
     _name = "hospital.specialities"

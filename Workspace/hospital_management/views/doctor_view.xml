@@ -49,7 +49,7 @@
 								<field name="date_of_joining"/>
 								<field name="degree_ids" widget="many2many_tags"/>
 								<field name="hospital_id"/>
-								<field name="branch_id"/>
+								<field name="branch_id" domain = "[('hospital_id','=', hospital_id)]"/>
 							</group>
 						</group>
 					</sheet>

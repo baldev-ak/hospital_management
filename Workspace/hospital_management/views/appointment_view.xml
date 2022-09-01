@@ -1,0 +1,51 @@
+<odoo>
+	<!--Starting of UI -->
+	<!-- Tree View -->
+	<record id="tree_hospital_apppointment_view" model="ir.ui.view">
+			<field name="name">hospital.patient.appointment.tree</field>
+			<field name="model">hospital.patient.appointment</field>
+			<field name="arch" type="xml">
+				<tree string="Appointment">
+					<field name="patient_id"/>
+					<field name="doctor_id"/>
+					<field name="referred_to_id"/>
+					<field name="date"/>
+				</tree>
+			</field>
+	</record>
+	<!-- Form View -->
+	<record id="form_hospital_apppointment_view" model="ir.ui.view">
+			<field name="name">hospital.patient.appointment.form</field>
+			<field name="model">hospital.patient.appointment</field>
+			<field name="arch" type="xml">
+				<form string="Appointment">
+					<sheet>
+						<group>
+							<group>
+								<field name="patient_id"/>
+								<field name="doctor_id"/>
+								<field name="referred_to_id"/>
+								<field name="date"/>
+							</group>
+						</group>
+					</sheet>
+				</form>
+			</field>
+	</record>
+	<!--Ending of UI -->
+
+
+	<!-- Action of Appointment -->
+	<record id = "action_appointment" model = "ir.actions.act_window">
+		<field name = "name">Appointment</field>
+		<field name = "res_model">hospital.patient.appointment</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<!-- Menubar of Appointment -->
+	<menuitem id = "menu_appointment"
+		name = "Appointment"
+		action = "action_appointment"
+		parent = "menu_hospital_master"
+		sequence = "3"/>
+</odoo>

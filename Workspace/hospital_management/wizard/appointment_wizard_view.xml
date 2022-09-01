@@ -1,0 +1,45 @@
+<odoo>
+	<data>
+	<!--Starting of UI -->
+	<!-- Form View -->
+	<record id="form_hospital_apppointment_wizard_view" model="ir.ui.view">
+			<field name="name">hospital.patient.appointment.wizard.form</field>
+			<field name="model">hospital.patient.appointment.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Appointment">
+					<sheet>
+						<group>
+								<field name="patient_id"/>
+								<field name="doctor_id"/>
+								<field name="referred_to_id"/>
+								<field name="date"/>
+								<field name="phone_number"/>
+								<field name="gender"/>
+								<field name="age"/>
+								<field name="blood_group"/>
+								<field name="hospital_id"/>
+								<field name="branch_id"/>
+						</group>					
+						<footer>
+							<button name = "button_confirm" string = "Save" type = "object" class = "oe_highlight"/>
+							<button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
+						</footer>
+
+					</sheet>
+				</form>
+			</field>
+	</record>
+	<!--Ending of UI -->
+
+
+	<!-- Action of Appointment -->
+	<record id = "action_appointment_wizard" model = "ir.actions.act_window">
+		<field name = "name">Appointment</field>
+		<field name = "res_model">hospital.patient.appointment.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+		<field name="view_id" ref = "form_hospital_apppointment_wizard_view"/>
+	</record>
+
+	</data>
+</odoo>
