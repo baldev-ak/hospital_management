@@ -15,6 +15,8 @@ class Patient(models.Model):
     hospital_id = fields.Many2one(comodel_name="hospital.hospital", string='Hospital')
     branch_id = fields.Many2one(comodel_name="hospital.branch", inverse_name="doctor_ids", string='Branch')
     doctor_id = fields.Many2one(comodel_name="hospital.doctor", string='Responsible Dr.')
+    appointment_ids = fields.One2many(comodel_name="hospital.patient.appointment",inverse_name = "patient_id", string='Appointments')
+    record_ids = fields.One2many(comodel_name="patient.medicalrecord",inverse_name = "patient_id", string='Medical Records')
 
     @api.depends('date_of_birth')
     def _compute_age(self):
@@ -25,3 +27,11 @@ class Patient(models.Model):
                 today = date.today()
                 age = today.year - openingdate.year - ((today.month, today.day) < (openingdate.month, openingdate.day))
                 rec.age = age
+
+class MedicalRecord(models.Model):
+    _name = "patient.medicalrecord"
+    _description = "Patient Medical Record"
+
+    patient_id = fields.Many2one(comodel_name = "hospital.patient", string = "Name")
+    doctor_id = fields.Many2one(comodel_name="hospital.doctor", string='Responsible Dr.')
+    record = fields.Char(string = "Note")

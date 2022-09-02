@@ -27,58 +27,36 @@ class BranchWizard(models.TransientModel):
         
     #     return res
 
-    def button_confirm(self):
-        doc = self.env['hospital.doctor'].search([('id','in',self.doctor_id.ids)])
-        hospital = self.env['hospital.hospital'].search([('id','in',self.hospital_id.ids)])
-        branch = self.env['hospital.branch'].search([('id','in',self.branch_id.ids)])
-        patient = self.env['hospital.patient'].search([('name','=',self.name)])
+    # def button_confirm(self):
+    #     doc = self.env['hospital.doctor'].search([('id','in',self.doctor_id.ids)])
+    #     hospital = self.env['hospital.hospital'].search([('id','in',self.hospital_id.ids)])
+    #     branch = self.env['hospital.branch'].search([('id','in',self.branch_id.ids)])
+    #     patient = self.env['hospital.patient'].search([('name','=',self.name)])
 
-        for rec in patient:
-            print("\n\n1------------\n",rec)
+    #     for rec in patient:
+    #         print("\n\n1------------\n",rec)
 
-        if self.name and self.doctor_id:
-            print("Found")
-            self.env['hospital.patient'].create({
-                'name': self.name,
-                'gender': self.gender,
-                'phone_number': self.phone_number,
-                'email_address': self.email_address,
-                'date_of_birth': self.date_of_birth,
-                'age': self.age,
-                'blood_group': self.blood_group,
-                'hospital_id': hospital.id,
-                'branch_id': branch.id,
-                'doctor_id': doc.id
-                })
-
-        # for rec in patient:
-        #     if self.name and self.doctor_id:
-        #         print("\n\n\n-----------1",self)
-        #         if self.name == rec.name:
-        #             print("\n\n\n----patient-----\n\n\n")
-        #         else:
-        #         # print("Found")
-        #             self.env['hospital.patient'].create({
-        #                 'name': self.name,
-        #                 'gender': self.gender,
-        #                 'phone_number': self.phone_number,
-        #                 'email_address': self.email_address,
-        #                 'date_of_birth': self.date_of_birth,
-        #                 'age': self.age,
-        #                 'blood_group': self.blood_group,
-        #                 'hospital_id': hospital.id,
-        #                 'branch_id': branch.id,
-        #                 'doctor_id': doc.id
-        #                 })
-        #     else:
-        #         print("Missing")
-
-    @api.depends('date_of_birth')
-    def _compute_age(self):
-        for rec in self:
-            rec.age = 0
-            if rec.date_of_birth:
-                openingdate = rec.date_of_birth
-                today = date.today()
-                age = today.year - openingdate.year - ((today.month, today.day) < (openingdate.month, openingdate.day))
-                rec.age = age
+    #     if self.name and self.doctor_id:
+    #         print("Found")
+    #         self.env['hospital.patient'].create({
+    #             'name': self.name,
+    #             'gender': self.gender,
+    #             'phone_number': self.phone_number,
+    #             'email_address': self.email_address,
+    #             'date_of_birth': self.date_of_birth,
+    #             'age': self.age,
+    #             'blood_group': self.blood_group,
+    #             'hospital_id': hospital.id,
+    #             'branch_id': branch.id,
+    #             'doctor_id': doc.id
+    #             })
+            
+    # @api.depends('date_of_birth')
+    # def _compute_age(self):
+    #     for rec in self:
+    #         rec.age = 0
+    #         if rec.date_of_birth:
+    #             openingdate = rec.date_of_birth
+    #             today = date.today()
+    #             age = today.year - openingdate.year - ((today.month, today.day) < (openingdate.month, openingdate.day))
+    #             rec.age = age

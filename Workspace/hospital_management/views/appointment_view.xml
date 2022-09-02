@@ -8,7 +8,7 @@
 				<tree string="Appointment">
 					<field name="patient_id"/>
 					<field name="doctor_id"/>
-					<field name="referred_to_id"/>
+					<!-- <field name="referred_to_id"/> -->
 					<field name="date"/>
 				</tree>
 			</field>
@@ -24,7 +24,7 @@
 							<group>
 								<field name="patient_id"/>
 								<field name="doctor_id"/>
-								<field name="referred_to_id"/>
+								<!-- <field name="referred_to_id"/> -->
 								<field name="date"/>
 							</group>
 						</group>
@@ -44,7 +44,7 @@
 
 	<!-- Menubar of Appointment -->
 	<menuitem id = "menu_appointment"
-		name = "Appointment"
+		name = "Appointments"
 		action = "action_appointment"
 		parent = "menu_hospital_master"
 		sequence = "3"/>

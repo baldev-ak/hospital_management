@@ -14,7 +14,6 @@
 					<field name="doctor_id"/>
 					<field name="hospital_id"/>
 					<field name="branch_id"/>
-					<button name="%(hospital_management.action_appointment_wizard)d" string="Appointment" type="action" class="btn-primary"/>
 				</tree>
 			</field>
 	</record>
@@ -30,13 +29,21 @@
 								<field name="name"/>
 								<field name="phone_number"/>
 								<field name="gender"/>
-								<field name="doctor_id"/>
+								<field name="appointment_ids"/>
 							</group>
 							<group>
 								<field name="date_of_birth"/>
 								<field name="blood_group"/>
 								<field name="hospital_id"/>
-								<field name="branch_id"/>
+								<field name="branch_id" domain = "[('hospital_id','=', hospital_id)]"/>
+								<field name="record_ids">
+									<tree>
+										<field name="patient_id"/>
+										<field name="doctor_id"/>
+										<field name="record"/>
+									</tree>
+								</field>
+
 
 								<!-- <button name = "action_appointment_wizard" string = "Appointment" type="action" class="btn-primary"/> -->
 							</group>

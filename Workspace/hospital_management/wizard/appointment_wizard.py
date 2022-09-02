@@ -18,37 +18,37 @@ class Appointment(models.TransientModel):
     branch_id = fields.Many2one(comodel_name="hospital.branch", inverse_name="doctor_ids", string='Branch',compute = "_compute_all")
   
     
-    @api.depends('patient_id')
-    def _compute_all(self):
-        for rec in self:
-            rec.doctor_id = ""
-            rec.gender = ""
-            rec.phone_number = 0
-            rec.age = 0
-            rec.blood_group = ""
-            rec.hospital_id = ""
-            rec.branch_id = ""
-            if rec.patient_id:
-                rec.doctor_id = rec.patient_id.doctor_id
-                rec.gender = rec.patient_id.gender
-                rec.phone_number = rec.patient_id.phone_number
-                rec.age = rec.patient_id.age
-                rec.blood_group = rec.patient_id.blood_group
-                rec.hospital_id = rec.patient_id.hospital_id
-                rec.branch_id = rec.patient_id.branch_id
+    # @api.depends('patient_id')
+    # def _compute_all(self):
+    #     for rec in self:
+    #         rec.doctor_id = ""
+    #         rec.gender = ""
+    #         rec.phone_number = 0
+    #         rec.age = 0
+    #         rec.blood_group = ""
+    #         rec.hospital_id = ""
+    #         rec.branch_id = ""
+    #         if rec.patient_id:
+    #             rec.doctor_id = rec.patient_id.doctor_id
+    #             rec.gender = rec.patient_id.gender
+    #             rec.phone_number = rec.patient_id.phone_number
+    #             rec.age = rec.patient_id.age
+    #             rec.blood_group = rec.patient_id.blood_group
+    #             rec.hospital_id = rec.patient_id.hospital_id
+    #             rec.branch_id = rec.patient_id.branch_id
 
 
 
-    def button_confirm(self):
-        doc = self.env['hospital.doctor'].search([('id','in',self.doctor_id.ids)])
-        # hospital = self.env['hospital.hospital'].search([('id','in',self.hospital_id.ids)])
-        # branch = self.env['hospital.branch'].search([('id','in',self.branch_id.ids)])
-        patient = self.env['hospital.patient'].search([('name','=',self.patient_id.name)])
+    # def button_confirm(self):
+    #     doc = self.env['hospital.doctor'].search([('id','in',self.doctor_id.ids)])
+    #     # hospital = self.env['hospital.hospital'].search([('id','in',self.hospital_id.ids)])
+    #     # branch = self.env['hospital.branch'].search([('id','in',self.branch_id.ids)])
+    #     patient = self.env['hospital.patient'].search([('name','=',self.patient_id.name)])
 
-        if self.patient_id and self.doctor_id:
-            print("Found")
-            self.env['hospital.patient.appointment'].create({
-                'patient_id': patient.id,
-                'doctor_id': doc.id,
-                'date': date.today()
-                })
+    #     if self.patient_id and self.doctor_id:
+    #         print("Found")
+    #         self.env['hospital.patient.appointment'].create({
+    #             'patient_id': patient.id,
+    #             'doctor_id': doc.id,
+    #             'date': date.today()
+    #             })

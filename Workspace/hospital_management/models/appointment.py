@@ -8,5 +8,16 @@ class Appointment(models.Model):
 
     patient_id = fields.Many2one(comodel_name = "hospital.patient", string = "Name")
     doctor_id = fields.Many2one(comodel_name = "hospital.doctor", string = "Responsible Dr.")
-    referred_to_id = fields.Many2one(comodel_name = "hospital.doctor", string = "Referred to Dr.")
+    # referred_to_id = fields.Many2one(comodel_name = "hospital.doctor", string = "Referred to Dr.")
     date = fields.Date(string = "Date")    
+
+    @api.model
+    def create(self,vals):
+        res = super(Appointment, self).create(vals)
+        # print("\n\n---------",res)
+        if vals.get('patient_id',False):
+            self.env['hospital.patient'].create({
+                'doctor_id': self.doctor_id,
+            })
+
+        return res

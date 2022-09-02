@@ -20,12 +20,12 @@
 								<field name="hospital_id"/>
 								<field name="branch_id"/>
 						</group>					
-						<footer>
+						<!-- <footer>
 							<button name = "button_confirm" string = "Save" type = "object" class = "oe_highlight"/>
 							<button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="z"/>
 						</footer>
 
-					</sheet>
+ -->					</sheet>
 				</form>
 			</field>
 	</record>
@@ -33,13 +33,13 @@
 
 
 	<!-- Action of Appointment -->
-	<record id = "action_appointment_wizard" model = "ir.actions.act_window">
+	<!-- <record id = "action_appointment_wizard" model = "ir.actions.act_window">
 		<field name = "name">Appointment</field>
 		<field name = "res_model">hospital.patient.appointment.wizard</field>
 		<field name="view_mode">form</field>
 		<field name="target">new</field>
 		<field name="view_id" ref = "form_hospital_apppointment_wizard_view"/>
-	</record>
+	</record> -->
 
 	</data>
 </odoo>

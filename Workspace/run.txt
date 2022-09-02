@@ -67,3 +67,21 @@ access_hospital_speciality,access_user_hospital_speciality,model_hospital_specia
     # print(browse_hr.refered_to_id,"-----------browse_hr-------")
     # res = super(HospitalPatient,self).unlink()
 
+@api.depends('patient_id')
+    def _compute_all(self):
+        for rec in self:
+            rec.doctor_id = ""
+            rec.gender = ""
+            rec.phone_number = 0
+            rec.age = 0
+            rec.blood_group = ""
+            rec.hospital_id = ""
+            rec.branch_id = ""
+            if rec.patient_id:
+                rec.doctor_id = rec.patient_id.doctor_id
+                rec.gender = rec.patient_id.gender
+                rec.phone_number = rec.patient_id.phone_number
+                rec.age = rec.patient_id.age
+                rec.blood_group = rec.patient_id.blood_group
+                rec.hospital_id = rec.patient_id.hospital_id
+                rec.branch_id = rec.patient_id.branch_id
